@@ -1,7 +1,7 @@
 // Service Worker — Jules Adventure CM1
-// Version 5 : mise à jour automatique + notification aux clients
+// Version 6 : guide tuiles + modal
 
-const CACHE_NAME = "jules-adventure-v5";
+const CACHE_NAME = "jules-adventure-v6";
 const ASSETS_TO_CACHE = [
     "./",
     "./App_Jules_Tablette.html",
