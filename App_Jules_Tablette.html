@@ -172,24 +172,42 @@ body.world-end #season-bg{opacity:0.1;}
 .sub-hud-stat{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border-radius:6px;padding:4px 9px;border:1px solid rgba(255,255,255,0.1);}
 .sub-hud-stat-icon{width:16px;height:16px;image-rendering:pixelated;display:block;}
 .sub-hud-stat-val{color:var(--gold);font-size:9px;}
-.guide-subject-tile{background:rgba(255,255,255,0.04);border-radius:10px;border:2px solid rgba(255,204,0,0.18);overflow:hidden;transition:border-color 0.2s;}
-.guide-subject-tile[open]{border-color:rgba(255,204,0,0.5);}
-.guide-subject-tile summary{display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(255,204,0,0.07);cursor:pointer;list-style:none;-webkit-appearance:none;transition:background 0.15s;}
-.guide-subject-tile summary::-webkit-details-marker{display:none;}
-.guide-subject-tile summary:active{background:rgba(255,204,0,0.18);}
-.guide-subject-tile[open] summary{background:rgba(255,204,0,0.12);border-bottom:2px solid rgba(255,204,0,0.2);}
-.guide-subject-title{font-size:10px;color:var(--gold);letter-spacing:1px;flex:1;}
-.guide-subject-count{font-size:6px;color:#888;margin-right:4px;}
-.guide-chevron{font-size:11px;color:var(--gold);transition:transform 0.25s;opacity:0.7;}
-.guide-subject-tile[open] .guide-chevron{transform:rotate(90deg);opacity:1;}
-.guide-subject-icon{width:22px;height:22px;image-rendering:pixelated;flex-shrink:0;}
-.guide-subject-body{padding:10px 16px 14px;display:flex;flex-direction:column;gap:2px;}
-.guide-rule{display:flex;align-items:flex-start;gap:10px;font-size:8px;line-height:2.1;color:#ddd;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.guide-rule:last-child{border-bottom:none;}
-.guide-rule-icon{width:16px;height:16px;image-rendering:pixelated;flex-shrink:0;margin-top:5px;}
-.guide-lex{font-size:8px;line-height:2.1;color:#ccc;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.guide-lex:last-child{border-bottom:none;}
-.guide-lex b{color:var(--gold);}
+/* ── GUIDE & LEXIQUE – onglets + accordéon JS ── */
+.guide-tabs{display:flex;border-bottom:2px solid rgba(255,204,0,0.2);flex-shrink:0;background:rgba(0,0,0,0.25);}
+.guide-tab{flex:1;padding:13px 6px;font-family:'Press Start 2P',monospace,cursive;font-size:8px;background:transparent;border:none;color:#555;cursor:pointer;transition:all 0.2s;border-bottom:3px solid transparent;margin-bottom:-2px;letter-spacing:0.5px;}
+.guide-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(255,204,0,0.07);}
+.guide-tab:active{opacity:0.7;}
+.guide-panel{display:flex;flex-direction:column;gap:8px;}
+.guide-acc{border-radius:10px;border:2px solid rgba(255,255,255,0.07);overflow:hidden;transition:border-color 0.25s;}
+.guide-acc.open{border-color:rgba(255,204,0,0.4);}
+.guide-acc.cl-m .guide-acc-hd{border-left:4px solid #3dfc3d;}
+.guide-acc.cl-f .guide-acc-hd{border-left:4px solid #ffcc00;}
+.guide-acc.cl-h .guide-acc-hd{border-left:4px solid #ff7700;}
+.guide-acc.cl-g .guide-acc-hd{border-left:4px solid #44aaff;}
+.guide-acc.cl-s .guide-acc-hd{border-left:4px solid #ff66cc;}
+.guide-acc.cl-rules .guide-acc-hd{border-left:4px solid rgba(255,255,255,0.4);}
+.guide-acc-hd{display:flex;align-items:center;gap:12px;padding:15px 14px;cursor:pointer;min-height:54px;user-select:none;background:rgba(255,255,255,0.03);transition:background 0.15s;}
+.guide-acc-hd:active{background:rgba(255,255,255,0.11);}
+.guide-acc.open .guide-acc-hd{background:rgba(255,204,0,0.07);}
+.guide-acc-emoji{font-size:18px;width:26px;text-align:center;flex-shrink:0;}
+.guide-acc-title{font-size:9px;color:var(--gold);flex:1;letter-spacing:0.5px;}
+.guide-acc-count{font-size:6px;color:#555;margin-right:6px;}
+.guide-chevron{font-size:10px;color:#666;transition:transform 0.25s;flex-shrink:0;}
+.guide-acc.open .guide-chevron{transform:rotate(90deg);color:var(--gold);}
+.guide-acc-body{display:none;flex-direction:column;gap:4px;padding:10px 12px 14px;background:rgba(0,0,0,0.25);}
+.guide-acc-body.open{display:flex;}
+.grule{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
+.grule-ico{font-size:16px;width:24px;text-align:center;flex-shrink:0;}
+.grule-txt{font-size:7px;color:#ddd;line-height:1.9;}
+.grule-txt b{color:var(--gold);}
+.tier-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.03);}
+.tier-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
+.tier-rname{font-size:7px;color:#ccc;flex:1;}
+.tier-boss{font-size:6px;color:#ff8866;}
+.lex-item{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 10px;border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
+.lex-term{font-size:8px;color:var(--gold);min-width:110px;flex-shrink:0;}
+.lex-def{font-size:7px;color:#ccc;line-height:1.8;flex:1;}
+.lex-ex{font-size:6px;color:#7ec87e;padding-top:2px;width:100%;}
 
 .sub-card-body{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
 #shop,#saves-screen,#stats-screen,#guide-screen{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:54px 8px 8px;}
@@ -554,121 +572,202 @@ body.world-end #season-bg{opacity:0.1;}
       </div>
     </div>
 
-    <!-- ── Cartes par matière (details/summary natif) ── -->
-    <div class="sub-card-body" style="gap:10px;padding:14px;">
-
-      <!-- RÈGLES -->
-      <details class="guide-subject-tile">
-        <summary>
-          <img class="guide-subject-icon" data-icon="sword">
-          <span class="guide-subject-title">COMMENT JOUER ?</span>
-          <span class="guide-subject-count">8 règles</span>
-          <span class="guide-chevron">▶</span>
-        </summary>
-        <div class="guide-subject-body">
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="heart"><span>Tu as <b>3 vies</b>. Si tu te trompes, tu en perds une.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="food"><span><b>La nourriture</b> te permet de passer une question difficile.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="diamond"><span>Tu gagnes des <b>diamants</b> en répondant correctement.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="shield"><span>Le <b>bouclier</b> te protège d'une mauvaise réponse.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="enchanted_book"><span>Le bouton <b>AIDE</b> donne un indice — coûte 1 diamant.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="food"><span>Le bouton <b>PASSER</b> saute la question — coûte 1 nourriture.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="book"><span>Le bouton <b>SAVE</b> sauvegarde ta progression.</span></div>
-          <div class="guide-rule"><img class="guide-rule-icon" data-icon="sword"><span><b>6 paliers</b> : Pierre → Fer → Or → Diamant → Netherite → Légendaire.</span></div>
-        </div>
-      </details>
-
-      <!-- MATHS -->
-      <details class="guide-subject-tile">
-        <summary>
-          <img class="guide-subject-icon" data-icon="enchanted_book">
-          <span class="guide-subject-title">MATHS</span>
-          <span class="guide-subject-count">12 mots</span>
-          <span class="guide-chevron">▶</span>
-        </summary>
-        <div class="guide-subject-body">
-          <div class="guide-lex"><b>Addition</b> — Mettre des nombres ensemble. Ex : 3 + 4 = 7</div>
-          <div class="guide-lex"><b>Soustraction</b> — Enlever un nombre d'un autre. Ex : 9 − 5 = 4</div>
-          <div class="guide-lex"><b>Multiplication</b> — Répéter une addition. Ex : 3 × 4 = 12</div>
-          <div class="guide-lex"><b>Division</b> — Partager en groupes égaux. Ex : 12 ÷ 4 = 3</div>
-          <div class="guide-lex"><b>Quotient</b> — Le résultat d'une division. Ex : 12 ÷ 4 = 3</div>
-          <div class="guide-lex"><b>Reste</b> — Ce qui reste après la division. Ex : 13 ÷ 4 = 3, reste 1</div>
-          <div class="guide-lex"><b>Fraction</b> — Une partie d'un tout. Ex : 1/2 = la moitié</div>
-          <div class="guide-lex"><b>Numérateur</b> — Le chiffre du haut dans une fraction. Ex : dans 3/4 → c'est le 3</div>
-          <div class="guide-lex"><b>Dénominateur</b> — Le chiffre du bas dans une fraction. Ex : dans 3/4 → c'est le 4</div>
-          <div class="guide-lex"><b>Périmètre</b> — Longueur autour d'une forme. Carré 5 cm → 20 cm</div>
-          <div class="guide-lex"><b>Aire</b> — Surface à l'intérieur d'une forme. Carré 5 cm → 25 cm²</div>
-          <div class="guide-lex"><b>Symétrie</b> — Quand une forme est pareille des deux côtés</div>
-        </div>
-      </details>
-
-      <!-- FRANÇAIS -->
-      <details class="guide-subject-tile">
-        <summary>
-          <img class="guide-subject-icon" data-icon="book">
-          <span class="guide-subject-title">FRANÇAIS</span>
-          <span class="guide-subject-count">14 mots</span>
-          <span class="guide-chevron">▶</span>
-        </summary>
-        <div class="guide-subject-body">
-          <div class="guide-lex"><b>Nom commun</b> — Désigne une chose ou une personne. Ex : maison, chien</div>
-          <div class="guide-lex"><b>Nom propre</b> — Nom d'une personne, ville ou pays. Ex : Paris, Jules</div>
-          <div class="guide-lex"><b>Adjectif</b> — Décrit le nom. Ex : un grand chien, une belle maison</div>
-          <div class="guide-lex"><b>Verbe</b> — Mot d'action. Ex : courir, manger, penser</div>
-          <div class="guide-lex"><b>Conjugaison</b> — Changer la forme du verbe selon la personne et le temps</div>
-          <div class="guide-lex"><b>Imparfait</b> — Temps du passé, habitude. Ex : je mangeais</div>
-          <div class="guide-lex"><b>Passé composé</b> — Action terminée. Ex : j'ai mangé</div>
-          <div class="guide-lex"><b>Futur simple</b> — Ce qui va arriver. Ex : je mangerai</div>
-          <div class="guide-lex"><b>Sujet</b> — Qui fait l'action dans la phrase</div>
-          <div class="guide-lex"><b>COD</b> — Ce qui reçoit l'action. Ex : je mange une pomme → la pomme est COD</div>
-          <div class="guide-lex"><b>Synonyme</b> — Mot qui veut dire pareil. Ex : joyeux = content</div>
-          <div class="guide-lex"><b>Antonyme</b> — Mot contraire. Ex : grand ≠ petit</div>
-          <div class="guide-lex"><b>Préfixe</b> — Début ajouté à un mot. Ex : in + possible = impossible</div>
-          <div class="guide-lex"><b>Suffixe</b> — Fin ajoutée à un mot. Ex : sage + sse = sagesse</div>
-        </div>
-      </details>
-
-      <!-- GÉO -->
-      <details class="guide-subject-tile">
-        <summary>
-          <img class="guide-subject-icon" data-icon="diamond">
-          <span class="guide-subject-title">GÉOGRAPHIE</span>
-          <span class="guide-subject-count">8 mots</span>
-          <span class="guide-chevron">▶</span>
-        </summary>
-        <div class="guide-subject-body">
-          <div class="guide-lex"><b>Continent</b> — Grande étendue de terre. Ex : Europe, Afrique, Asie</div>
-          <div class="guide-lex"><b>Pays</b> — Territoire avec ses propres lois et son drapeau</div>
-          <div class="guide-lex"><b>Capitale</b> — Ville principale d'un pays. Ex : Paris = capitale de la France</div>
-          <div class="guide-lex"><b>Frontière</b> — La limite entre deux pays</div>
-          <div class="guide-lex"><b>Montagne</b> — Relief très haut. Ex : les Alpes, les Pyrénées</div>
-          <div class="guide-lex"><b>Fleuve</b> — Rivière qui se jette dans la mer. Ex : Loire, Seine</div>
-          <div class="guide-lex"><b>Légende</b> — Explication des symboles sur une carte</div>
-          <div class="guide-lex"><b>Rose des vents</b> — Les 4 directions : Nord / Sud / Est / Ouest</div>
-        </div>
-      </details>
-
-      <!-- HISTOIRE -->
-      <details class="guide-subject-tile">
-        <summary>
-          <img class="guide-subject-icon" data-icon="sword">
-          <span class="guide-subject-title">HISTOIRE</span>
-          <span class="guide-subject-count">8 mots</span>
-          <span class="guide-chevron">▶</span>
-        </summary>
-        <div class="guide-subject-body">
-          <div class="guide-lex"><b>Préhistoire</b> — Avant l'écriture. Les hommes vivaient dans des grottes</div>
-          <div class="guide-lex"><b>Antiquité</b> — De l'écriture (-3000) à la chute de Rome (476)</div>
-          <div class="guide-lex"><b>Moyen Âge</b> — De 476 à 1492. Châteaux forts, chevaliers</div>
-          <div class="guide-lex"><b>Renaissance</b> — À partir de 1492. Retour des arts et sciences</div>
-          <div class="guide-lex"><b>Révolution française</b> — 1789 : le peuple renverse le roi</div>
-          <div class="guide-lex"><b>Chronologie</b> — Ranger les événements dans l'ordre du temps</div>
-          <div class="guide-lex"><b>Siècle</b> — 100 ans. Ex : XXIe siècle = les années 2000</div>
-          <div class="guide-lex"><b>Av. J.-C.</b> — Avant Jésus-Christ (les années qui comptent à l'envers)</div>
-        </div>
-      </details>
-
-      <button class="btn-footer" style="width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="showMenu()">🏠 RETOUR AU MENU</button>
+    <!-- ── Onglets Guide / Lexique ── -->
+    <div class="guide-tabs">
+      <button class="guide-tab active" id="gtab-guide" onclick="switchGuideTab('guide')">🎮 GUIDE</button>
+      <button class="guide-tab" id="gtab-lex" onclick="switchGuideTab('lex')">📖 LEXIQUE</button>
     </div>
+
+    <div class="sub-card-body" style="gap:0;padding:14px;">
+
+      <!-- ═══════════ PANNEAU GUIDE ═══════════ -->
+      <div id="gpanel-guide" class="guide-panel">
+
+        <!-- COMMENT JOUER -->
+        <div class="guide-acc cl-rules open" id="gacc-rules">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('rules')">
+            <span class="guide-acc-emoji">⚔️</span>
+            <span class="guide-acc-title">COMMENT JOUER ?</span>
+            <span class="guide-acc-count">9 règles</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body open" id="gacc-rules-body">
+            <div class="grule"><span class="grule-ico">❤️</span><span class="grule-txt">Tu as <b>3 vies</b>. Si tu te trompes tu en perds une.</span></div>
+            <div class="grule"><span class="grule-ico">🍗</span><span class="grule-txt"><b>La nourriture</b> te permet de passer une question difficile.</span></div>
+            <div class="grule"><span class="grule-ico">💎</span><span class="grule-txt">Tu gagnes des <b>émeraudes</b> en battant les boss.</span></div>
+            <div class="grule"><span class="grule-ico">🛡️</span><span class="grule-txt">Le <b>bouclier</b> absorbe une mauvaise réponse sans perdre de vie.</span></div>
+            <div class="grule"><span class="grule-ico">💡</span><span class="grule-txt">Le bouton <b>AIDE</b> révèle un indice sur la question.</span></div>
+            <div class="grule"><span class="grule-ico">⏭️</span><span class="grule-txt">Le bouton <b>PASSER</b> saute la question — coûte 1 nourriture.</span></div>
+            <div class="grule"><span class="grule-ico">💾</span><span class="grule-txt">Le bouton <b>SAVE</b> sauvegarde ta progression.</span></div>
+            <div class="grule"><span class="grule-ico">👾</span><span class="grule-txt">Un <b>Boss</b> apparaît tous les 10 pas. Le vaincre rapporte des émeraudes.</span></div>
+            <div class="grule"><span class="grule-ico">🏆</span><span class="grule-txt">Dépense tes émeraudes à la <b>boutique</b> pour acheter des pouvoirs.</span></div>
+          </div>
+        </div>
+
+        <!-- LES PALIERS -->
+        <div class="guide-acc cl-rules" id="gacc-tiers">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('tiers')">
+            <span class="guide-acc-emoji">⛏️</span>
+            <span class="guide-acc-title">LES PALIERS</span>
+            <span class="guide-acc-count">7 niveaux</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-tiers-body">
+            <div class="tier-row"><div class="tier-dot" style="background:#888;"></div><span class="tier-rname">🪨 Pierre</span><span class="tier-boss">Boss : Zombie</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#c87533;"></div><span class="tier-rname">🟤 Cuivre</span><span class="tier-boss">Boss : Araignée</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#bfc9ca;"></div><span class="tier-rname">⚙️ Fer</span><span class="tier-boss">Boss : Squelette</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#ffd700;"></div><span class="tier-rname">🌟 Or</span><span class="tier-boss">Boss : Blaze</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#00bfff;"></div><span class="tier-rname">💎 Diamant</span><span class="tier-boss">Boss : Wither Skeleton</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#9b59b6;"></div><span class="tier-rname">🔮 Néthérite</span><span class="tier-boss">Boss : Wither</span></div>
+            <div class="tier-row"><div class="tier-dot" style="background:#44ff44;"></div><span class="tier-rname">🌿 Overworld → 🔥 Nether → ⭐ End</span><span class="tier-boss">Boss : Ender Dragon</span></div>
+          </div>
+        </div>
+
+        <!-- LES POUVOIRS -->
+        <div class="guide-acc cl-rules" id="gacc-powers">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('powers')">
+            <span class="guide-acc-emoji">🔮</span>
+            <span class="guide-acc-title">LES POUVOIRS</span>
+            <span class="guide-acc-count">10 pouvoirs</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-powers-body">
+            <div class="grule"><span class="grule-ico">🧪</span><span class="grule-txt"><b>Potion de vie</b> — Redonne 1 vie.</span></div>
+            <div class="grule"><span class="grule-ico">🛡️</span><span class="grule-txt"><b>Bouclier</b> — Bloque la prochaine erreur.</span></div>
+            <div class="grule"><span class="grule-ico">🍗</span><span class="grule-txt"><b>Pilon de Poulet</b> — Ajoute 1 nourriture (passer une question).</span></div>
+            <div class="grule"><span class="grule-ico">🪄</span><span class="grule-txt"><b>Totem</b> — Résurrection automatique à la mort.</span></div>
+            <div class="grule"><span class="grule-ico">🍎</span><span class="grule-txt"><b>Pomme d'Or</b> — Ajoute 3 vies permanentes.</span></div>
+            <div class="grule"><span class="grule-ico">🔍</span><span class="grule-txt"><b>Loupe</b> — Révèle un indice sans coût.</span></div>
+            <div class="grule"><span class="grule-ico">✨</span><span class="grule-txt"><b>Fiole d'XP</b> — Saute 2 étapes d'un coup.</span></div>
+            <div class="grule"><span class="grule-ico">🧲</span><span class="grule-txt"><b>Aimant</b> — Gemmes de boss × 2.</span></div>
+            <div class="grule"><span class="grule-ico">📚</span><span class="grule-txt"><b>Livre du Savoir</b> — Révèle directement la réponse.</span></div>
+            <div class="grule"><span class="grule-ico">⭐</span><span class="grule-txt"><b>Étoile du Nether</b> — Vainc le boss automatiquement (+10 💎).</span></div>
+          </div>
+        </div>
+
+      </div><!-- /gpanel-guide -->
+
+      <!-- ═══════════ PANNEAU LEXIQUE ═══════════ -->
+      <div id="gpanel-lex" class="guide-panel" style="display:none;">
+
+        <!-- MATHS -->
+        <div class="guide-acc cl-m" id="gacc-maths">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('maths')">
+            <span class="guide-acc-emoji">🔢</span>
+            <span class="guide-acc-title" style="color:#3dfc3d;">MATHS</span>
+            <span class="guide-acc-count">12 mots</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-maths-body">
+            <div class="lex-item"><span class="lex-term">Addition</span><span class="lex-def">Mettre des nombres ensemble<span class="lex-ex">Ex : 3 + 4 = 7</span></span></div>
+            <div class="lex-item"><span class="lex-term">Soustraction</span><span class="lex-def">Enlever un nombre d'un autre<span class="lex-ex">Ex : 9 − 5 = 4</span></span></div>
+            <div class="lex-item"><span class="lex-term">Multiplication</span><span class="lex-def">Répéter une addition<span class="lex-ex">Ex : 3 × 4 = 12</span></span></div>
+            <div class="lex-item"><span class="lex-term">Division</span><span class="lex-def">Partager en groupes égaux<span class="lex-ex">Ex : 12 ÷ 4 = 3</span></span></div>
+            <div class="lex-item"><span class="lex-term">Quotient</span><span class="lex-def">Résultat d'une division<span class="lex-ex">Ex : 12 ÷ 4 = 3</span></span></div>
+            <div class="lex-item"><span class="lex-term">Reste</span><span class="lex-def">Ce qui reste après division<span class="lex-ex">Ex : 13 ÷ 4 = 3, reste 1</span></span></div>
+            <div class="lex-item"><span class="lex-term">Fraction</span><span class="lex-def">Une partie d'un tout<span class="lex-ex">Ex : 1/2 = la moitié</span></span></div>
+            <div class="lex-item"><span class="lex-term">Numérateur</span><span class="lex-def">Chiffre du haut d'une fraction<span class="lex-ex">dans 3/4 → c'est 3</span></span></div>
+            <div class="lex-item"><span class="lex-term">Dénominateur</span><span class="lex-def">Chiffre du bas d'une fraction<span class="lex-ex">dans 3/4 → c'est 4</span></span></div>
+            <div class="lex-item"><span class="lex-term">Périmètre</span><span class="lex-def">Longueur autour d'une forme<span class="lex-ex">carré 5 cm → 20 cm</span></span></div>
+            <div class="lex-item"><span class="lex-term">Aire</span><span class="lex-def">Surface à l'intérieur d'une forme<span class="lex-ex">carré 5 cm → 25 cm²</span></span></div>
+            <div class="lex-item"><span class="lex-term">Symétrie</span><span class="lex-def">Forme identique des deux côtés d'un axe</span></div>
+          </div>
+        </div>
+
+        <!-- FRANÇAIS -->
+        <div class="guide-acc cl-f" id="gacc-fr">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('fr')">
+            <span class="guide-acc-emoji">📝</span>
+            <span class="guide-acc-title" style="color:#ffcc00;">FRANÇAIS</span>
+            <span class="guide-acc-count">14 mots</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-fr-body">
+            <div class="lex-item"><span class="lex-term">Nom commun</span><span class="lex-def">Désigne une chose ou une personne<span class="lex-ex">Ex : maison, chien</span></span></div>
+            <div class="lex-item"><span class="lex-term">Nom propre</span><span class="lex-def">Nom d'une personne, ville ou pays<span class="lex-ex">Ex : Paris, Jules</span></span></div>
+            <div class="lex-item"><span class="lex-term">Adjectif</span><span class="lex-def">Décrit le nom<span class="lex-ex">Ex : un grand chien</span></span></div>
+            <div class="lex-item"><span class="lex-term">Verbe</span><span class="lex-def">Mot d'action<span class="lex-ex">Ex : courir, manger, penser</span></span></div>
+            <div class="lex-item"><span class="lex-term">Conjugaison</span><span class="lex-def">Changer le verbe selon la personne et le temps</span></div>
+            <div class="lex-item"><span class="lex-term">Imparfait</span><span class="lex-def">Temps du passé, habitude ou durée<span class="lex-ex">Ex : je mangeais</span></span></div>
+            <div class="lex-item"><span class="lex-term">Passé composé</span><span class="lex-def">Action terminée dans le passé<span class="lex-ex">Ex : j'ai mangé</span></span></div>
+            <div class="lex-item"><span class="lex-term">Futur simple</span><span class="lex-def">Ce qui va arriver<span class="lex-ex">Ex : je mangerai</span></span></div>
+            <div class="lex-item"><span class="lex-term">Sujet</span><span class="lex-def">Qui fait l'action dans la phrase</span></div>
+            <div class="lex-item"><span class="lex-term">COD</span><span class="lex-def">Ce qui reçoit l'action<span class="lex-ex">Ex : je mange une pomme → pomme = COD</span></span></div>
+            <div class="lex-item"><span class="lex-term">Synonyme</span><span class="lex-def">Mot qui veut dire pareil<span class="lex-ex">Ex : joyeux = content</span></span></div>
+            <div class="lex-item"><span class="lex-term">Antonyme</span><span class="lex-def">Mot contraire<span class="lex-ex">Ex : grand ≠ petit</span></span></div>
+            <div class="lex-item"><span class="lex-term">Préfixe</span><span class="lex-def">Début ajouté à un mot<span class="lex-ex">Ex : in + possible = impossible</span></span></div>
+            <div class="lex-item"><span class="lex-term">Suffixe</span><span class="lex-def">Fin ajoutée à un mot<span class="lex-ex">Ex : sage + sse = sagesse</span></span></div>
+          </div>
+        </div>
+
+        <!-- GÉOGRAPHIE -->
+        <div class="guide-acc cl-g" id="gacc-geo">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('geo')">
+            <span class="guide-acc-emoji">🌍</span>
+            <span class="guide-acc-title" style="color:#44aaff;">GÉOGRAPHIE</span>
+            <span class="guide-acc-count">8 mots</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-geo-body">
+            <div class="lex-item"><span class="lex-term">Continent</span><span class="lex-def">Grande étendue de terre<span class="lex-ex">Ex : Europe, Afrique, Asie</span></span></div>
+            <div class="lex-item"><span class="lex-term">Pays</span><span class="lex-def">Territoire avec ses propres lois et son drapeau</span></div>
+            <div class="lex-item"><span class="lex-term">Capitale</span><span class="lex-def">Ville principale d'un pays<span class="lex-ex">Paris = capitale de France</span></span></div>
+            <div class="lex-item"><span class="lex-term">Frontière</span><span class="lex-def">La limite entre deux pays</span></div>
+            <div class="lex-item"><span class="lex-term">Montagne</span><span class="lex-def">Relief très haut<span class="lex-ex">Ex : Alpes, Pyrénées</span></span></div>
+            <div class="lex-item"><span class="lex-term">Fleuve</span><span class="lex-def">Rivière qui se jette dans la mer<span class="lex-ex">Ex : Loire, Seine</span></span></div>
+            <div class="lex-item"><span class="lex-term">Légende</span><span class="lex-def">Explication des symboles sur une carte</span></div>
+            <div class="lex-item"><span class="lex-term">Rose des vents</span><span class="lex-def">Les 4 directions<span class="lex-ex">Nord / Sud / Est / Ouest</span></span></div>
+          </div>
+        </div>
+
+        <!-- HISTOIRE -->
+        <div class="guide-acc cl-h" id="gacc-hist">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('hist')">
+            <span class="guide-acc-emoji">🏰</span>
+            <span class="guide-acc-title" style="color:#ff7700;">HISTOIRE</span>
+            <span class="guide-acc-count">8 mots</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-hist-body">
+            <div class="lex-item"><span class="lex-term">Préhistoire</span><span class="lex-def">Avant l'écriture — les hommes vivaient dans des grottes</span></div>
+            <div class="lex-item"><span class="lex-term">Antiquité</span><span class="lex-def">De l'écriture (−3000) à la chute de Rome<span class="lex-ex">476 ap. J.-C.</span></span></div>
+            <div class="lex-item"><span class="lex-term">Moyen Âge</span><span class="lex-def">De 476 à 1492 — châteaux forts, chevaliers</span></div>
+            <div class="lex-item"><span class="lex-term">Renaissance</span><span class="lex-def">À partir de 1492 — retour des arts et sciences</span></div>
+            <div class="lex-item"><span class="lex-term">Révolution fr.</span><span class="lex-def">1789 : le peuple renverse le roi</span></div>
+            <div class="lex-item"><span class="lex-term">Chronologie</span><span class="lex-def">Ranger les événements dans l'ordre du temps</span></div>
+            <div class="lex-item"><span class="lex-term">Siècle</span><span class="lex-def">100 ans<span class="lex-ex">XXIe siècle = les années 2000</span></span></div>
+            <div class="lex-item"><span class="lex-term">Av. J.-C.</span><span class="lex-def">Avant Jésus-Christ — les années qui comptent à l'envers</span></div>
+          </div>
+        </div>
+
+        <!-- SCIENCES -->
+        <div class="guide-acc cl-s" id="gacc-sci">
+          <div class="guide-acc-hd" onclick="toggleGuideAcc('sci')">
+            <span class="guide-acc-emoji">🔬</span>
+            <span class="guide-acc-title" style="color:#ff66cc;">SCIENCES</span>
+            <span class="guide-acc-count">8 mots</span>
+            <span class="guide-chevron">▶</span>
+          </div>
+          <div class="guide-acc-body" id="gacc-sci-body">
+            <div class="lex-item"><span class="lex-term">Photosynthèse</span><span class="lex-def">Les plantes fabriquent leur nourriture grâce à la lumière du soleil</span></div>
+            <div class="lex-item"><span class="lex-term">Oxygène</span><span class="lex-def">Gaz indispensable à la respiration, produit par les plantes</span></div>
+            <div class="lex-item"><span class="lex-term">Énergie solaire</span><span class="lex-def">Énergie du Soleil captée par des panneaux photovoltaïques</span></div>
+            <div class="lex-item"><span class="lex-term">Énergie éolienne</span><span class="lex-def">Énergie du vent, captée par des éoliennes</span></div>
+            <div class="lex-item"><span class="lex-term">Compostage</span><span class="lex-def">Recyclage des matières organiques pour enrichir la terre</span></div>
+            <div class="lex-item"><span class="lex-term">Rotation</span><span class="lex-def">La Terre tourne sur elle-même en 24 h<span class="lex-ex">→ le jour et la nuit</span></span></div>
+            <div class="lex-item"><span class="lex-term">Révolution</span><span class="lex-def">La Terre tourne autour du Soleil en 365 jours<span class="lex-ex">→ les saisons</span></span></div>
+            <div class="lex-item"><span class="lex-term">Système solaire</span><span class="lex-def">Le Soleil et les 8 planètes qui tournent autour de lui</span></div>
+          </div>
+        </div>
+
+      </div><!-- /gpanel-lex -->
+
+    </div><!-- /sub-card-body -->
+
+    <div style="padding:0 14px 14px;flex-shrink:0;">
+      <button class="btn-footer" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="showMenu()">🏠 RETOUR AU MENU</button>
+    </div>
+
   </div>
 </div>
 </div><!-- main-card -->
@@ -1617,7 +1716,23 @@ function initIcons(){
 }
 initIcons();
 
-// accordion via <details> natif — pas de JS requis
+// ── GUIDE : accordéon JS + onglets ─────────────────
+function toggleGuideAcc(id){
+  const sec=document.getElementById('gacc-'+id);
+  const body=document.getElementById('gacc-'+id+'-body');
+  if(!sec||!body) return;
+  const open=sec.classList.contains('open');
+  sec.classList.toggle('open',!open);
+  body.classList.toggle('open',!open);
+}
+function switchGuideTab(tab){
+  ['guide','lex'].forEach(t=>{
+    const panel=document.getElementById('gpanel-'+t);
+    const btn=document.getElementById('gtab-'+t);
+    if(panel) panel.style.display=t===tab?'flex':'none';
+    if(btn) btn.classList.toggle('active',t===tab);
+  });
+}
 </script>
 </body>
 </html>
