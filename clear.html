@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mise à jour Jules Adventure…</title>
+<style>
+  body{margin:0;background:#0a0a0a;color:#fff;font-family:monospace;display:flex;
+       flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:20px;}
+  h1{color:#ffcc00;font-size:18px;margin-bottom:20px;}
+  p{color:#aaa;font-size:13px;line-height:2;}
+  #status{color:#3dfc3d;font-size:14px;margin-top:24px;}
+  .spinner{font-size:32px;animation:spin 1s linear infinite;display:inline-block;margin-bottom:16px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+<div class="spinner">⛏️</div>
+<h1>Mise à jour en cours…</h1>
+<p>Suppression du cache et des anciens Service Workers</p>
+<p id="status">Initialisation…</p>
+
+<script>
+(async () => {
+  const s = document.getElementById('status');
+
+  // 1. Désinscription de tous les Service Workers
+  if ('serviceWorker' in navigator) {
+    const regs = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(regs.map(r => r.unregister()));
+    s.textContent = '✅ Service Workers supprimés (' + regs.length + ')';
+  }
+
+  // 2. Suppression de tous les caches
+  const keys = await caches.keys();
+  await Promise.all(keys.map(k => caches.delete(k)));
+  s.textContent = '✅ Caches supprimés (' + keys.length + ')';
+
+  await new Promise(r => setTimeout(r, 800));
+  s.textContent = '🚀 Redirection vers la nouvelle version…';
+  await new Promise(r => setTimeout(r, 600));
+
+  // 3. Retour vers l'accueil (version fraîche, sans cache)
+  window.location.replace('/');
+})();
+</script>
+</body>
+</html>
