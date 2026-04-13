@@ -207,47 +207,10 @@ body.world-end #season-bg{opacity:0.1;}
 .sub-hud-stat{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.07);border-radius:6px;padding:4px 9px;border:1px solid rgba(255,255,255,0.1);}
 .sub-hud-stat-icon{width:16px;height:16px;image-rendering:pixelated;display:block;}
 .sub-hud-stat-val{color:var(--gold);font-size:9px;}
-/* ── GUIDE & LEXIQUE – onglets + accordéon JS ── */
-.guide-tabs{display:flex;border-bottom:2px solid rgba(255,204,0,0.2);flex-shrink:0;background:rgba(0,0,0,0.25);}
-.guide-tab{flex:1;padding:13px 6px;font-family:'Press Start 2P',monospace,cursive;font-size:8px;background:transparent;border:none;color:#555;cursor:pointer;transition:all 0.2s;border-bottom:3px solid transparent;margin-bottom:-2px;letter-spacing:0.5px;}
-.guide-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(255,204,0,0.07);}
-.guide-tab:active{opacity:0.7;}
-/* ── GUIDE : tuiles ── */
-.guide-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;flex:1;align-content:start;}
-.guide-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px 8px;border-radius:14px;border:2px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);cursor:pointer;color:white;font-family:'Press Start 2P',monospace,cursive;font-size:7px;letter-spacing:0.5px;transition:all 0.15s;min-height:100px;text-align:center;line-height:1.7;-webkit-tap-highlight-color:transparent;}
-.guide-tile:active,.guide-tile:focus{transform:scale(0.93);outline:none;}
-.guide-tile-emoji{font-size:30px;line-height:1;}
-.guide-tile.cl-m{border-color:rgba(61,252,61,0.45);background:rgba(61,252,61,0.08);}
-.guide-tile.cl-f{border-color:rgba(255,204,0,0.45);background:rgba(255,204,0,0.08);}
-.guide-tile.cl-h{border-color:rgba(255,119,0,0.45);background:rgba(255,119,0,0.08);}
-.guide-tile.cl-g{border-color:rgba(68,170,255,0.45);background:rgba(68,170,255,0.08);}
-.guide-tile.cl-s{border-color:rgba(255,102,204,0.45);background:rgba(255,102,204,0.08);}
-.guide-tile.cl-rules{border-color:rgba(255,255,255,0.22);background:rgba(255,255,255,0.05);}
-/* ── GUIDE : modal ── */
-#guide-modal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;padding:12px;}
-#guide-modal.open{display:flex;}
-#guide-modal-card{background:#111827;border-radius:14px;border:2px solid rgba(255,204,0,0.35);width:100%;max-width:680px;max-height:84vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 50px rgba(0,0,0,0.9);}
-#guide-modal-hdr{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,204,0,0.07);border-bottom:2px solid rgba(255,204,0,0.2);flex-shrink:0;}
-#guide-modal-ico{font-size:22px;}
-#guide-modal-ttl{font-size:10px;color:var(--gold);flex:1;}
-#guide-modal-close{background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.18);color:#fff;font-family:'Press Start 2P',monospace,cursive;font-size:8px;padding:10px 14px;border-radius:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-#guide-modal-close:active{opacity:0.7;}
-#guide-modal-body{overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:6px;}
-.grule{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
-.grule-ico{font-size:16px;width:24px;text-align:center;flex-shrink:0;}
-.grule-txt{font-size:7px;color:#ddd;line-height:1.9;}
-.grule-txt b{color:var(--gold);}
-.tier-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;background:rgba(255,255,255,0.03);}
-.tier-dot{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
-.tier-rname{font-size:7px;color:#ccc;flex:1;}
-.tier-boss{font-size:6px;color:#ff8866;}
-.lex-item{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 10px;border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);}
-.lex-term{font-size:8px;color:var(--gold);min-width:110px;flex-shrink:0;}
-.lex-def{font-size:7px;color:#ccc;line-height:1.8;flex:1;}
-.lex-ex{font-size:6px;color:#7ec87e;padding-top:2px;width:100%;}
+
 
 .sub-card-body{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
-#shop,#saves-screen,#stats-screen,#guide-screen{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:54px 8px 8px;}
+#shop,#saves-screen,#stats-screen{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:54px 8px 8px;}
 
 /* ── Game card (clone visuel du menu) ── */
 #game{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:54px 8px 8px;}
@@ -472,11 +435,6 @@ body.world-end #season-bg{opacity:0.1;}
           BOUTIQUE
           <span class="btn-menu-arrow">›</span>
         </button>
-        <button class="btn-menu-main btn-menu-regular" onclick="showGuide()" style="margin-top:4px;">
-          <span style="font-size:14px;">📖</span>
-          GUIDE &amp; LEXIQUE
-          <span class="btn-menu-arrow">›</span>
-        </button>
         <button id="btn-install" class="btn-menu-main" onclick="installApp()" style="display:none;margin-top:4px;background:linear-gradient(135deg,#1a3a1a,#2a5a2a);border:2px solid #3dfc3d;">
           <span style="font-size:14px;">📲</span>
           INSTALLER L'APP
@@ -595,80 +553,6 @@ body.world-end #season-bg{opacity:0.1;}
     </div>
   </div>
 
-  <!-- GUIDE -->
-  <div id="guide-screen" style="display:none;">
-  <div class="sub-card" style="max-width:960px;width:100%;">
-
-    <!-- ── HUD sticky ── -->
-    <div class="sub-hud">
-      <div class="sub-hud-top-row">
-        <img class="sub-hud-stat-icon" data-icon="book" style="width:20px;height:20px;flex-shrink:0;">
-        <span class="sub-hud-world">GUIDE &amp; LEXIQUE</span>
-        <span class="sub-hud-tier">CM1</span>
-        <div class="sub-hud-stats">
-          <div class="sub-hud-stat"><img class="sub-hud-stat-icon" data-icon="heart"><span id="sh-g-lives" class="sub-hud-stat-val">3</span></div>
-          <div class="sub-hud-stat"><img class="sub-hud-stat-icon" data-icon="food"><span id="sh-g-food" class="sub-hud-stat-val">3</span></div>
-          <div class="sub-hud-stat"><img class="sub-hud-stat-icon" data-icon="diamond"><span id="sh-g-money" class="sub-hud-stat-val">0</span></div>
-          <div class="sub-hud-stat"><img class="sub-hud-stat-icon" data-icon="shield"><span id="sh-g-shield" class="sub-hud-stat-val">0</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Onglets Guide / Lexique ── -->
-    <div class="guide-tabs">
-      <button class="guide-tab active" id="gtab-guide" onclick="switchGuideTab('guide')">🎮 GUIDE</button>
-      <button class="guide-tab" id="gtab-lex" onclick="switchGuideTab('lex')">📖 LEXIQUE</button>
-    </div>
-
-    <!-- ═══════════ PANNEAU GUIDE (tuiles) ═══════════ -->
-    <div id="gpanel-guide" class="guide-tiles">
-      <button type="button" class="guide-tile cl-rules" data-guide="rules">
-        <span class="guide-tile-emoji">⚔️</span>COMMENT JOUER
-      </button>
-      <button type="button" class="guide-tile cl-rules" data-guide="tiers">
-        <span class="guide-tile-emoji">⛏️</span>LES PALIERS
-      </button>
-      <button type="button" class="guide-tile cl-rules" data-guide="powers">
-        <span class="guide-tile-emoji">🔮</span>LES POUVOIRS
-      </button>
-    </div>
-
-    <!-- ═══════════ PANNEAU LEXIQUE (tuiles) ═══════════ -->
-    <div id="gpanel-lex" class="guide-tiles" style="display:none;">
-      <button type="button" class="guide-tile cl-m" data-guide="maths">
-        <span class="guide-tile-emoji">🔢</span>MATHS
-      </button>
-      <button type="button" class="guide-tile cl-f" data-guide="fr">
-        <span class="guide-tile-emoji">📝</span>FRANÇAIS
-      </button>
-      <button type="button" class="guide-tile cl-g" data-guide="geo">
-        <span class="guide-tile-emoji">🌍</span>GÉOGRAPHIE
-      </button>
-      <button type="button" class="guide-tile cl-h" data-guide="hist">
-        <span class="guide-tile-emoji">🏰</span>HISTOIRE
-      </button>
-      <button type="button" class="guide-tile cl-s" data-guide="sci">
-        <span class="guide-tile-emoji">🔬</span>SCIENCES
-      </button>
-    </div>
-
-    <div style="padding:0 14px 14px;flex-shrink:0;">
-      <button class="btn-footer" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="showMenu()">🏠 RETOUR AU MENU</button>
-    </div>
-
-  </div>
-</div>
-<!-- ── Modal Guide/Lexique ── -->
-<div id="guide-modal" role="dialog" aria-modal="true">
-  <div id="guide-modal-card">
-    <div id="guide-modal-hdr">
-      <span id="guide-modal-ico"></span>
-      <span id="guide-modal-ttl"></span>
-      <button id="guide-modal-close" onclick="closeGuideModal()">✕ FERMER</button>
-    </div>
-    <div id="guide-modal-body"></div>
-  </div>
-</div>
 </div><!-- main-card -->
 
 <script>
@@ -1153,14 +1037,8 @@ function recordAnswer(cat,correct){
   }
 }
 
-function showGuide(){
-  ["menu","game","shop","saves-screen","stats-screen","guide-screen"].forEach(id=>{
-    const el=document.getElementById(id);if(el) el.style.display=id==="guide-screen"?"flex":"none";
-  });
-  updateUI();
-}
 function showStats(){
-  const screens=["menu","game","shop","saves-screen","stats-screen","guide-screen"];
+  const screens=["menu","game","shop","saves-screen","stats-screen"];
   screens.forEach(id=>{const el=document.getElementById(id);if(el) el.style.display=id==="stats-screen"?"flex":"none";});
   updateUI();
   renderStats();
@@ -1632,136 +1510,6 @@ function installApp(){
     if(btn) btn.style.display='none';
   });
 }
-
-// ── GUIDE : tuiles + modal ─────────────────────────
-const GUIDE_DATA={
-  rules:{ico:'⚔️',title:'COMMENT JOUER ?',html:`
-    <div class="grule"><span class="grule-ico">❤️</span><span class="grule-txt">Tu as <b>3 vies</b>. Si tu te trompes tu en perds une.</span></div>
-    <div class="grule"><span class="grule-ico">🍗</span><span class="grule-txt"><b>La nourriture</b> te permet de passer une question difficile.</span></div>
-    <div class="grule"><span class="grule-ico">💎</span><span class="grule-txt">Tu gagnes des <b>émeraudes</b> en battant les boss.</span></div>
-    <div class="grule"><span class="grule-ico">🛡️</span><span class="grule-txt">Le <b>bouclier</b> absorbe une mauvaise réponse sans perdre de vie.</span></div>
-    <div class="grule"><span class="grule-ico">💡</span><span class="grule-txt">Le bouton <b>AIDE</b> révèle un indice sur la question.</span></div>
-    <div class="grule"><span class="grule-ico">⏭️</span><span class="grule-txt">Le bouton <b>PASSER</b> saute la question — coûte 1 nourriture.</span></div>
-    <div class="grule"><span class="grule-ico">💾</span><span class="grule-txt">Le bouton <b>SAVE</b> sauvegarde ta progression.</span></div>
-    <div class="grule"><span class="grule-ico">👾</span><span class="grule-txt">Un <b>Boss</b> apparaît tous les 10 pas. Le vaincre rapporte des émeraudes.</span></div>
-    <div class="grule"><span class="grule-ico">🏆</span><span class="grule-txt">Dépense tes émeraudes à la <b>boutique</b> pour acheter des pouvoirs.</span></div>`},
-  tiers:{ico:'⛏️',title:'LES PALIERS',html:`
-    <div class="tier-row"><div class="tier-dot" style="background:#888;"></div><span class="tier-rname">🪨 Pierre</span><span class="tier-boss">Boss : Zombie</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#c87533;"></div><span class="tier-rname">🟤 Cuivre</span><span class="tier-boss">Boss : Araignée</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#bfc9ca;"></div><span class="tier-rname">⚙️ Fer</span><span class="tier-boss">Boss : Squelette</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#ffd700;"></div><span class="tier-rname">🌟 Or</span><span class="tier-boss">Boss : Blaze</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#00bfff;"></div><span class="tier-rname">💎 Diamant</span><span class="tier-boss">Boss : Wither Skeleton</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#9b59b6;"></div><span class="tier-rname">🔮 Néthérite</span><span class="tier-boss">Boss : Wither</span></div>
-    <div class="tier-row"><div class="tier-dot" style="background:#44ff44;"></div><span class="tier-rname">🌿 Overworld → 🔥 Nether → ⭐ End</span><span class="tier-boss">Boss : Ender Dragon</span></div>`},
-  powers:{ico:'🔮',title:'LES POUVOIRS',html:`
-    <div class="grule"><span class="grule-ico">🧪</span><span class="grule-txt"><b>Potion de vie</b> — Redonne 1 vie.</span></div>
-    <div class="grule"><span class="grule-ico">🛡️</span><span class="grule-txt"><b>Bouclier</b> — Bloque la prochaine erreur.</span></div>
-    <div class="grule"><span class="grule-ico">🍗</span><span class="grule-txt"><b>Pilon de Poulet</b> — Ajoute 1 nourriture (passer une question).</span></div>
-    <div class="grule"><span class="grule-ico">🪄</span><span class="grule-txt"><b>Totem</b> — Résurrection automatique à la mort.</span></div>
-    <div class="grule"><span class="grule-ico">🍎</span><span class="grule-txt"><b>Pomme d'Or</b> — Ajoute 3 vies permanentes.</span></div>
-    <div class="grule"><span class="grule-ico">🔍</span><span class="grule-txt"><b>Loupe</b> — Révèle un indice sans coût.</span></div>
-    <div class="grule"><span class="grule-ico">✨</span><span class="grule-txt"><b>Fiole d'XP</b> — Saute 2 étapes d'un coup.</span></div>
-    <div class="grule"><span class="grule-ico">🧲</span><span class="grule-txt"><b>Aimant</b> — Gemmes de boss × 2.</span></div>
-    <div class="grule"><span class="grule-ico">📚</span><span class="grule-txt"><b>Livre du Savoir</b> — Révèle directement la réponse.</span></div>
-    <div class="grule"><span class="grule-ico">⭐</span><span class="grule-txt"><b>Étoile du Nether</b> — Vainc le boss automatiquement (+10 💎).</span></div>`},
-  maths:{ico:'🔢',title:'MATHS',html:`
-    <div class="lex-item"><span class="lex-term">Addition</span><span class="lex-def">Mettre des nombres ensemble<span class="lex-ex">Ex : 3 + 4 = 7</span></span></div>
-    <div class="lex-item"><span class="lex-term">Soustraction</span><span class="lex-def">Enlever un nombre d'un autre<span class="lex-ex">Ex : 9 − 5 = 4</span></span></div>
-    <div class="lex-item"><span class="lex-term">Multiplication</span><span class="lex-def">Répéter une addition<span class="lex-ex">Ex : 3 × 4 = 12</span></span></div>
-    <div class="lex-item"><span class="lex-term">Division</span><span class="lex-def">Partager en groupes égaux<span class="lex-ex">Ex : 12 ÷ 4 = 3</span></span></div>
-    <div class="lex-item"><span class="lex-term">Quotient</span><span class="lex-def">Résultat d'une division<span class="lex-ex">Ex : 12 ÷ 4 = 3</span></span></div>
-    <div class="lex-item"><span class="lex-term">Reste</span><span class="lex-def">Ce qui reste après division<span class="lex-ex">Ex : 13 ÷ 4 = 3, reste 1</span></span></div>
-    <div class="lex-item"><span class="lex-term">Fraction</span><span class="lex-def">Une partie d'un tout<span class="lex-ex">Ex : 1/2 = la moitié</span></span></div>
-    <div class="lex-item"><span class="lex-term">Numérateur</span><span class="lex-def">Chiffre du haut d'une fraction<span class="lex-ex">dans 3/4 → c'est 3</span></span></div>
-    <div class="lex-item"><span class="lex-term">Dénominateur</span><span class="lex-def">Chiffre du bas d'une fraction<span class="lex-ex">dans 3/4 → c'est 4</span></span></div>
-    <div class="lex-item"><span class="lex-term">Périmètre</span><span class="lex-def">Longueur autour d'une forme<span class="lex-ex">carré 5 cm → 20 cm</span></span></div>
-    <div class="lex-item"><span class="lex-term">Aire</span><span class="lex-def">Surface à l'intérieur d'une forme<span class="lex-ex">carré 5 cm → 25 cm²</span></span></div>
-    <div class="lex-item"><span class="lex-term">Symétrie</span><span class="lex-def">Forme identique des deux côtés d'un axe</span></div>`},
-  fr:{ico:'📝',title:'FRANÇAIS',html:`
-    <div class="lex-item"><span class="lex-term">Nom commun</span><span class="lex-def">Désigne une chose ou une personne<span class="lex-ex">Ex : maison, chien</span></span></div>
-    <div class="lex-item"><span class="lex-term">Nom propre</span><span class="lex-def">Nom d'une personne, ville ou pays<span class="lex-ex">Ex : Paris, Jules</span></span></div>
-    <div class="lex-item"><span class="lex-term">Adjectif</span><span class="lex-def">Décrit le nom<span class="lex-ex">Ex : un grand chien</span></span></div>
-    <div class="lex-item"><span class="lex-term">Verbe</span><span class="lex-def">Mot d'action<span class="lex-ex">Ex : courir, manger, penser</span></span></div>
-    <div class="lex-item"><span class="lex-term">Conjugaison</span><span class="lex-def">Changer le verbe selon la personne et le temps</span></div>
-    <div class="lex-item"><span class="lex-term">Imparfait</span><span class="lex-def">Temps du passé, habitude ou durée<span class="lex-ex">Ex : je mangeais</span></span></div>
-    <div class="lex-item"><span class="lex-term">Passé composé</span><span class="lex-def">Action terminée dans le passé<span class="lex-ex">Ex : j'ai mangé</span></span></div>
-    <div class="lex-item"><span class="lex-term">Futur simple</span><span class="lex-def">Ce qui va arriver<span class="lex-ex">Ex : je mangerai</span></span></div>
-    <div class="lex-item"><span class="lex-term">Sujet</span><span class="lex-def">Qui fait l'action dans la phrase</span></div>
-    <div class="lex-item"><span class="lex-term">COD</span><span class="lex-def">Ce qui reçoit l'action<span class="lex-ex">Ex : je mange une pomme → pomme = COD</span></span></div>
-    <div class="lex-item"><span class="lex-term">Synonyme</span><span class="lex-def">Mot qui veut dire pareil<span class="lex-ex">Ex : joyeux = content</span></span></div>
-    <div class="lex-item"><span class="lex-term">Antonyme</span><span class="lex-def">Mot contraire<span class="lex-ex">Ex : grand ≠ petit</span></span></div>
-    <div class="lex-item"><span class="lex-term">Préfixe</span><span class="lex-def">Début ajouté à un mot<span class="lex-ex">Ex : in + possible = impossible</span></span></div>
-    <div class="lex-item"><span class="lex-term">Suffixe</span><span class="lex-def">Fin ajoutée à un mot<span class="lex-ex">Ex : sage + sse = sagesse</span></span></div>`},
-  geo:{ico:'🌍',title:'GÉOGRAPHIE',html:`
-    <div class="lex-item"><span class="lex-term">Continent</span><span class="lex-def">Grande étendue de terre<span class="lex-ex">Ex : Europe, Afrique, Asie</span></span></div>
-    <div class="lex-item"><span class="lex-term">Pays</span><span class="lex-def">Territoire avec ses propres lois et son drapeau</span></div>
-    <div class="lex-item"><span class="lex-term">Capitale</span><span class="lex-def">Ville principale d'un pays<span class="lex-ex">Paris = capitale de France</span></span></div>
-    <div class="lex-item"><span class="lex-term">Frontière</span><span class="lex-def">La limite entre deux pays</span></div>
-    <div class="lex-item"><span class="lex-term">Montagne</span><span class="lex-def">Relief très haut<span class="lex-ex">Ex : Alpes, Pyrénées</span></span></div>
-    <div class="lex-item"><span class="lex-term">Fleuve</span><span class="lex-def">Rivière qui se jette dans la mer<span class="lex-ex">Ex : Loire, Seine</span></span></div>
-    <div class="lex-item"><span class="lex-term">Légende</span><span class="lex-def">Explication des symboles sur une carte</span></div>
-    <div class="lex-item"><span class="lex-term">Rose des vents</span><span class="lex-def">Les 4 directions<span class="lex-ex">Nord / Sud / Est / Ouest</span></span></div>`},
-  hist:{ico:'🏰',title:'HISTOIRE',html:`
-    <div class="lex-item"><span class="lex-term">Préhistoire</span><span class="lex-def">Avant l'écriture — les hommes vivaient dans des grottes</span></div>
-    <div class="lex-item"><span class="lex-term">Antiquité</span><span class="lex-def">De l'écriture (−3000) à la chute de Rome<span class="lex-ex">476 ap. J.-C.</span></span></div>
-    <div class="lex-item"><span class="lex-term">Moyen Âge</span><span class="lex-def">De 476 à 1492 — châteaux forts, chevaliers</span></div>
-    <div class="lex-item"><span class="lex-term">Renaissance</span><span class="lex-def">À partir de 1492 — retour des arts et sciences</span></div>
-    <div class="lex-item"><span class="lex-term">Révolution fr.</span><span class="lex-def">1789 : le peuple renverse le roi</span></div>
-    <div class="lex-item"><span class="lex-term">Chronologie</span><span class="lex-def">Ranger les événements dans l'ordre du temps</span></div>
-    <div class="lex-item"><span class="lex-term">Siècle</span><span class="lex-def">100 ans<span class="lex-ex">XXIe siècle = les années 2000</span></span></div>
-    <div class="lex-item"><span class="lex-term">Av. J.-C.</span><span class="lex-def">Avant Jésus-Christ — les années qui comptent à l'envers</span></div>`},
-  sci:{ico:'🔬',title:'SCIENCES',html:`
-    <div class="lex-item"><span class="lex-term">Photosynthèse</span><span class="lex-def">Les plantes fabriquent leur nourriture grâce à la lumière du soleil</span></div>
-    <div class="lex-item"><span class="lex-term">Oxygène</span><span class="lex-def">Gaz indispensable à la respiration, produit par les plantes</span></div>
-    <div class="lex-item"><span class="lex-term">Énergie solaire</span><span class="lex-def">Énergie du Soleil captée par des panneaux photovoltaïques</span></div>
-    <div class="lex-item"><span class="lex-term">Énergie éolienne</span><span class="lex-def">Énergie du vent, captée par des éoliennes</span></div>
-    <div class="lex-item"><span class="lex-term">Compostage</span><span class="lex-def">Recyclage des matières organiques pour enrichir la terre</span></div>
-    <div class="lex-item"><span class="lex-term">Rotation</span><span class="lex-def">La Terre tourne sur elle-même en 24 h<span class="lex-ex">→ le jour et la nuit</span></span></div>
-    <div class="lex-item"><span class="lex-term">Révolution</span><span class="lex-def">La Terre tourne autour du Soleil en 365 jours<span class="lex-ex">→ les saisons</span></span></div>
-    <div class="lex-item"><span class="lex-term">Système solaire</span><span class="lex-def">Le Soleil et les 8 planètes qui tournent autour de lui</span></div>`}
-};
-window.openGuideModal=function(id){
-  try{
-    const d=GUIDE_DATA[id]; if(!d) return;
-    const ico=document.getElementById('guide-modal-ico');
-    const ttl=document.getElementById('guide-modal-ttl');
-    const body=document.getElementById('guide-modal-body');
-    const modal=document.getElementById('guide-modal');
-    if(!modal||!body||!ico||!ttl) return;
-    ico.textContent=d.ico;
-    ttl.textContent=d.title;
-    body.innerHTML=d.html;
-    modal.classList.add('open');
-    body.scrollTop=0;
-  }catch(err){console.error('openGuideModal',err);}
-};
-window.closeGuideModal=function(){
-  const modal=document.getElementById('guide-modal');
-  if(modal) modal.classList.remove('open');
-};
-window.switchGuideTab=function(tab){
-  ['guide','lex'].forEach(t=>{
-    const panel=document.getElementById('gpanel-'+t);
-    const btn=document.getElementById('gtab-'+t);
-    if(panel) panel.style.display=t===tab?'grid':'none';
-    if(btn) btn.classList.toggle('active',t===tab);
-  });
-};
-// Event delegation : clic sur une tuile ouvre la modal
-document.addEventListener('click',function(e){
-  const tile=e.target.closest && e.target.closest('.guide-tile');
-  if(tile){
-    const id=tile.getAttribute('data-guide');
-    if(id) window.openGuideModal(id);
-  }
-});
-document.addEventListener('keydown',function(e){if(e.key==='Escape') window.closeGuideModal();});
-(function(){
-  const m=document.getElementById('guide-modal');
-  if(m) m.addEventListener('click',function(e){
-    if(e.target===m) window.closeGuideModal();
-  });
-})();
 </script>
 </body>
 </html>
