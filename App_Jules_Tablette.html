@@ -622,32 +622,32 @@ body.world-end #season-bg{opacity:0.1;}
 
     <!-- ═══════════ PANNEAU GUIDE (tuiles) ═══════════ -->
     <div id="gpanel-guide" class="guide-tiles">
-      <button class="guide-tile cl-rules" onclick="openGuideModal('rules')">
+      <button type="button" class="guide-tile cl-rules" data-guide="rules">
         <span class="guide-tile-emoji">⚔️</span>COMMENT JOUER
       </button>
-      <button class="guide-tile cl-rules" onclick="openGuideModal('tiers')">
+      <button type="button" class="guide-tile cl-rules" data-guide="tiers">
         <span class="guide-tile-emoji">⛏️</span>LES PALIERS
       </button>
-      <button class="guide-tile cl-rules" onclick="openGuideModal('powers')">
+      <button type="button" class="guide-tile cl-rules" data-guide="powers">
         <span class="guide-tile-emoji">🔮</span>LES POUVOIRS
       </button>
     </div>
 
     <!-- ═══════════ PANNEAU LEXIQUE (tuiles) ═══════════ -->
     <div id="gpanel-lex" class="guide-tiles" style="display:none;">
-      <button class="guide-tile cl-m" onclick="openGuideModal('maths')">
+      <button type="button" class="guide-tile cl-m" data-guide="maths">
         <span class="guide-tile-emoji">🔢</span>MATHS
       </button>
-      <button class="guide-tile cl-f" onclick="openGuideModal('fr')">
+      <button type="button" class="guide-tile cl-f" data-guide="fr">
         <span class="guide-tile-emoji">📝</span>FRANÇAIS
       </button>
-      <button class="guide-tile cl-g" onclick="openGuideModal('geo')">
+      <button type="button" class="guide-tile cl-g" data-guide="geo">
         <span class="guide-tile-emoji">🌍</span>GÉOGRAPHIE
       </button>
-      <button class="guide-tile cl-h" onclick="openGuideModal('hist')">
+      <button type="button" class="guide-tile cl-h" data-guide="hist">
         <span class="guide-tile-emoji">🏰</span>HISTOIRE
       </button>
-      <button class="guide-tile cl-s" onclick="openGuideModal('sci')">
+      <button type="button" class="guide-tile cl-s" data-guide="sci">
         <span class="guide-tile-emoji">🔬</span>SCIENCES
       </button>
     </div>
@@ -1720,29 +1720,48 @@ const GUIDE_DATA={
     <div class="lex-item"><span class="lex-term">Révolution</span><span class="lex-def">La Terre tourne autour du Soleil en 365 jours<span class="lex-ex">→ les saisons</span></span></div>
     <div class="lex-item"><span class="lex-term">Système solaire</span><span class="lex-def">Le Soleil et les 8 planètes qui tournent autour de lui</span></div>`}
 };
-function openGuideModal(id){
-  const d=GUIDE_DATA[id]; if(!d) return;
-  document.getElementById('guide-modal-ico').textContent=d.ico;
-  document.getElementById('guide-modal-ttl').textContent=d.title;
-  document.getElementById('guide-modal-body').innerHTML=d.html;
-  document.getElementById('guide-modal').classList.add('open');
-  document.getElementById('guide-modal-body').scrollTop=0;
-}
-function closeGuideModal(){
-  document.getElementById('guide-modal').classList.remove('open');
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape') closeGuideModal();});
-document.getElementById('guide-modal').addEventListener('click',e=>{
-  if(e.target===document.getElementById('guide-modal')) closeGuideModal();
-});
-function switchGuideTab(tab){
+window.openGuideModal=function(id){
+  try{
+    const d=GUIDE_DATA[id]; if(!d) return;
+    const ico=document.getElementById('guide-modal-ico');
+    const ttl=document.getElementById('guide-modal-ttl');
+    const body=document.getElementById('guide-modal-body');
+    const modal=document.getElementById('guide-modal');
+    if(!modal||!body||!ico||!ttl) return;
+    ico.textContent=d.ico;
+    ttl.textContent=d.title;
+    body.innerHTML=d.html;
+    modal.classList.add('open');
+    body.scrollTop=0;
+  }catch(err){console.error('openGuideModal',err);}
+};
+window.closeGuideModal=function(){
+  const modal=document.getElementById('guide-modal');
+  if(modal) modal.classList.remove('open');
+};
+window.switchGuideTab=function(tab){
   ['guide','lex'].forEach(t=>{
     const panel=document.getElementById('gpanel-'+t);
     const btn=document.getElementById('gtab-'+t);
     if(panel) panel.style.display=t===tab?'grid':'none';
     if(btn) btn.classList.toggle('active',t===tab);
   });
-}
+};
+// Event delegation : clic sur une tuile ouvre la modal
+document.addEventListener('click',function(e){
+  const tile=e.target.closest && e.target.closest('.guide-tile');
+  if(tile){
+    const id=tile.getAttribute('data-guide');
+    if(id) window.openGuideModal(id);
+  }
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape') window.closeGuideModal();});
+(function(){
+  const m=document.getElementById('guide-modal');
+  if(m) m.addEventListener('click',function(e){
+    if(e.target===m) window.closeGuideModal();
+  });
+})();
 </script>
 </body>
 </html>

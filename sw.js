@@ -1,7 +1,7 @@
 // Service Worker — Jules Adventure CM1
-// Version 6 : guide tuiles + modal
+// Version 7 : guide tuiles (data-guide + event delegation)
 
-const CACHE_NAME = "jules-adventure-v6";
+const CACHE_NAME = "jules-adventure-v7";
 const ASSETS_TO_CACHE = [
     "./",
     "./App_Jules_Tablette.html",
