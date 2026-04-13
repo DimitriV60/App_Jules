@@ -1,0 +1,26 @@
+{
+  "name": "Jules Adventure — Révision CM1",
+  "short_name": "Jules CM1",
+  "description": "Application pédagogique gamifiée pour réviser le programme CM1 Trimestre 2 avec l'univers Minecraft.",
+  "start_url": "./App_Jules.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1a1a1a",
+  "theme_color": "#3b7a2a",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/emoji/192/pickaxe-emoji.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://img.icons8.com/emoji/512/pickaxe-emoji.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "games"]
+}
