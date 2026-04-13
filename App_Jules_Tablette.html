@@ -1718,6 +1718,12 @@ function applySeasonalBackground(){
 
 applySeasonalBackground();
 
+// Affiche le bouton install si l'event a été capturé avant que le DOM soit prêt
+if(window._installPrompt){
+  const b=document.getElementById('btn-install');
+  if(b) b.style.display='flex';
+}
+
 // ── Pixel art icons init ──
 function initIcons(){
   const map={
