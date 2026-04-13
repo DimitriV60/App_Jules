@@ -1,11 +1,13 @@
 // Service Worker — Jules Adventure CM1
-// Version 2 : cache-first + stratégie réseau de secours
+// Version 4 : cache-first + stratégie réseau de secours
 
-const CACHE_NAME = "jules-adventure-v3";
+const CACHE_NAME = "jules-adventure-v4";
 const ASSETS_TO_CACHE = [
     "./",
     "./App_Jules_Tablette.html",
     "./manifest.json",
+    "./icon-192.png",
+    "./icon-512.png",
 ];
 
 // Installation : mise en cache des ressources statiques

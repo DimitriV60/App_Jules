@@ -6,7 +6,22 @@
 <title>Jules Adventure - CM1</title>
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<script>if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
+// Capture l'événement d'installation PWA
+window._installPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  window._installPrompt = e;
+  const btn = document.getElementById('btn-install');
+  if(btn) btn.style.display = 'flex';
+});
+window.addEventListener('appinstalled', () => {
+  const btn = document.getElementById('btn-install');
+  if(btn) btn.style.display = 'none';
+  window._installPrompt = null;
+});
+</script>
 <style>
 :root{--mc-green:#3dfc3d;--mc-boss:#ff0055;--glass:rgba(0,0,0,0.72);--gold:#ffcc00;}
 *{box-sizing:border-box;margin:0;padding:0;max-width:100%;}html,body{overflow-x:hidden;max-width:100vw;}html{overflow-x:hidden;}
@@ -439,6 +454,11 @@ body.world-end #season-bg{opacity:0.1;}
           <span style="font-size:14px;">📖</span>
           GUIDE &amp; LEXIQUE
           <span class="btn-menu-arrow">›</span>
+        </button>
+        <button id="btn-install" class="btn-menu-main" onclick="installApp()" style="display:none;margin-top:4px;background:linear-gradient(135deg,#1a3a1a,#2a5a2a);border:2px solid #3dfc3d;">
+          <span style="font-size:14px;">📲</span>
+          INSTALLER L'APP
+          <span class="btn-menu-arrow" style="color:#3dfc3d;">↓</span>
         </button>
       </div>
     </div>
@@ -1715,6 +1735,18 @@ function initIcons(){
   });
 }
 initIcons();
+
+// ── INSTALLATION PWA ─────────────────────────────────
+function installApp(){
+  if(!window._installPrompt) return;
+  window._installPrompt.prompt();
+  window._installPrompt.userChoice.then(r=>{
+    if(r.outcome==='accepted') showNotif("✅ App installée !","correct",2000);
+    window._installPrompt=null;
+    const btn=document.getElementById('btn-install');
+    if(btn) btn.style.display='none';
+  });
+}
 
 // ── GUIDE : accordéon JS + onglets ─────────────────
 function toggleGuideAcc(id){
