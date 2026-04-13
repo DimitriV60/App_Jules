@@ -1,5 +1,8 @@
 # ── Netlify — Jules Adventure CM1 ──────────────────────────────
 
+[build]
+  publish = "."
+
 # Sert App_Jules_Tablette.html à la racine (URL propre)
 [[redirects]]
   from = "/"
