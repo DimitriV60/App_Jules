@@ -1,10 +1,10 @@
 // Service Worker — Jules Adventure CM1
 // Version 2 : cache-first + stratégie réseau de secours
 
-const CACHE_NAME = "jules-adventure-v2";
+const CACHE_NAME = "jules-adventure-v3";
 const ASSETS_TO_CACHE = [
     "./",
-    "./App_Jules.html",
+    "./App_Jules_Tablette.html",
     "./manifest.json",
 ];
 
@@ -48,7 +48,7 @@ self.addEventListener("fetch", event => {
             });
         }).catch(() => {
             // Fallback ultime si réseau coupé et ressource non en cache
-            return caches.match("./App_Jules.html");
+            return caches.match("./App_Jules_Tablette.html");
         })
     );
 });

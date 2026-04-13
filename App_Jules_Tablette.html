@@ -10,7 +10,7 @@
 <style>
 :root{--mc-green:#3dfc3d;--mc-boss:#ff0055;--glass:rgba(0,0,0,0.72);--gold:#ffcc00;}
 *{box-sizing:border-box;margin:0;padding:0;max-width:100%;}html,body{overflow-x:hidden;max-width:100vw;}html{overflow-x:hidden;}
-body{font-family:'Press Start 2P',cursive;margin:0;color:white;background:#0a0a0a;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;}
+body{font-family:'Press Start 2P',monospace,cursive;margin:0;color:white;background:#0a0a0a;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:stretch;}
 body.world-nether{--mc-green:#ff7700;--gold:#ff4400;background-image:radial-gradient(ellipse at center,#3a0000 0%,#0d0000 100%);}
 body.world-end{--mc-green:#cc44ff;--gold:#9933dd;background-image:radial-gradient(ellipse at center,#1a0035 0%,#030008 100%);}
 #intro-anim{position:fixed;inset:0;background:#000;color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;animation:fadeOut 2s 1.5s forwards;pointer-events:none;}
@@ -25,8 +25,8 @@ body.world-end{--mc-green:#cc44ff;--gold:#9933dd;background-image:radial-gradien
 #notif.correct{border-color:var(--mc-green);box-shadow:0 0 28px rgba(61,252,61,0.4);}
 #notif.wrong{border-color:var(--mc-boss);box-shadow:0 0 28px rgba(255,0,85,0.4);}
 header{display:none !important;}
-#btn-fs{position:fixed;top:8px;left:10px;z-index:20;background:rgba(255,255,255,0.08);border:1px solid #444;color:#aaa;font-family:'Press Start 2P';font-size:7px;padding:5px 7px;border-radius:5px;cursor:pointer;}
-#btn-exit{position:fixed;top:8px;right:10px;z-index:20;background:rgba(163,42,42,0.7);border:1px solid #a32a2a;color:#fff;font-family:'Press Start 2P';font-size:7px;padding:5px 7px;border-radius:5px;cursor:pointer;}
+#btn-fs{position:fixed;top:8px;left:10px;z-index:20;background:rgba(255,255,255,0.08);border:1px solid #444;color:#aaa;font-family:'Press Start 2P',monospace,cursive;font-size:7px;padding:5px 7px;border-radius:5px;cursor:pointer;}
+#btn-exit{position:fixed;top:8px;right:10px;z-index:20;background:rgba(163,42,42,0.7);border:1px solid #a32a2a;color:#fff;font-family:'Press Start 2P',monospace,cursive;font-size:7px;padding:5px 7px;border-radius:5px;cursor:pointer;}
 #btn-exit:active,#btn-fs:active{opacity:0.7;}
 body.world-nether header{background:rgba(25,5,0,0.97);}
 body.world-end header{background:rgba(8,0,20,0.97);}
@@ -46,7 +46,7 @@ body.world-end header{background:rgba(8,0,20,0.97);}
 .alphabet-side{display:flex;flex-direction:column;gap:5px;}
 .numpad-side{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:rgba(0,0,0,0.4);padding:8px;border-radius:12px;border:2px solid #444;min-width:152px;}
 .row{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;}
-button.key{padding:11px 0;width:43px;font-size:10px;background:#333;border:none;border-bottom:4px solid #000;color:white;cursor:pointer;border-radius:6px;font-family:'Press Start 2P';transition:0.1s;}
+button.key{padding:11px 0;width:43px;font-size:10px;background:#333;border:none;border-bottom:4px solid #000;color:white;cursor:pointer;border-radius:6px;font-family:'Press Start 2P',monospace,cursive;transition:0.1s;}
 button.key:active{transform:translateY(3px);border-bottom-width:1px;}
 button.key.accent{background:#1e3a5f;color:#90cdf4;}
 button.key.wide{width:106px;}
@@ -54,8 +54,8 @@ button.key.space-k{width:125px;background:#2a2a4a;color:#90cdf4;font-size:8px;}
 button.num{background:#444;width:100%;}
 button.ok-key{grid-column:span 3;background:#2d5a20;margin-top:3px;}
 button.del-key{background:#a32a2a;}
-input#ans{display:block;width:90%;margin:0 auto 9px;padding:13px;background:rgba(0,0,0,0.8);border:3px solid #555;color:var(--mc-green);font-family:'Press Start 2P';font-size:17px;text-align:center;pointer-events:none;border-radius:4px;}
-.btn-footer{font-family:'Press Start 2P';font-size:9px;padding:10px;cursor:pointer;border:none;border-bottom:4px solid #000;background:#555;color:white;margin:4px;min-width:100px;border-radius:4px;transition:filter 0.15s;}
+input#ans{display:block;width:90%;margin:0 auto 9px;padding:13px;background:rgba(0,0,0,0.8);border:3px solid #555;color:var(--mc-green);font-family:'Press Start 2P',monospace,cursive;font-size:17px;text-align:center;pointer-events:none;border-radius:4px;}
+.btn-footer{font-family:'Press Start 2P',monospace,cursive;font-size:9px;padding:10px;cursor:pointer;border:none;border-bottom:4px solid #000;background:#555;color:white;margin:4px;min-width:100px;border-radius:4px;transition:filter 0.15s;}
 .btn-footer:hover{filter:brightness(1.25);}
 .btn-footer:active{transform:translateY(2px);border-bottom-width:2px;}
 .btn-footer:disabled{opacity:0.4;cursor:not-allowed;}
@@ -147,7 +147,7 @@ body.world-end #season-bg{opacity:0.1;}
 
 /* Panel droit - Boutons */
 .buttons-panel{flex:1;display:flex;flex-direction:column;padding:12px 14px;gap:7px;justify-content:center;}
-.btn-menu-main{font-family:'Press Start 2P',cursive;cursor:pointer;border:none;border-radius:6px;color:white;transition:all 0.15s;display:flex;align-items:center;justify-content:flex-start;gap:10px;padding:0 14px;width:100%;position:relative;overflow:hidden;}
+.btn-menu-main{font-family:'Press Start 2P',monospace,cursive;cursor:pointer;border:none;border-radius:6px;color:white;transition:all 0.15s;display:flex;align-items:center;justify-content:flex-start;gap:10px;padding:0 14px;width:100%;position:relative;overflow:hidden;}
 .btn-menu-main::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.08),transparent);opacity:0;transition:opacity 0.2s;}
 .btn-menu-main:hover::before{opacity:1;}
 .btn-menu-main:active{transform:translateY(2px);}
@@ -346,11 +346,11 @@ body.world-end #season-bg{opacity:0.1;}
 <div id="notif"></div>
 <div id="death-screen" style="display:none;position:fixed;inset:0;z-index:950;background:rgba(100,0,0,0.88);backdrop-filter:blur(3px);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;">
   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAVklEQVR4nO3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOBvAI8AAT4ZY7sAAAAASUVORK5CYII=" style="width:96px;height:96px;image-rendering:pixelated;margin-bottom:16px;filter:drop-shadow(0 0 20px #ff0000);">
-  <div style="font-family:'Press Start 2P',cursive;font-size:18px;color:#ff3333;margin-bottom:10px;text-shadow:0 0 20px #ff0000;">YOU DIED!</div>
-  <div id="death-msg" style="font-family:'Press Start 2P',cursive;font-size:8px;color:#ffaaaa;line-height:2.2;margin-bottom:8px;max-width:300px;"></div>
-  <div id="death-answer" style="font-family:'Press Start 2P',cursive;font-size:7px;color:#aaa;margin-bottom:24px;"></div>
-  <button onclick="location.reload()" style="font-family:'Press Start 2P',cursive;background:#7a1a1a;border:none;border-bottom:4px solid #400000;color:#fff;padding:14px 24px;font-size:9px;cursor:pointer;border-radius:6px;">⚔️ RÉESSAYER</button>
-  <button onclick="autoSave();showMenu();document.getElementById('death-screen').style.display='none';" style="font-family:'Press Start 2P',cursive;background:#444;border:none;border-bottom:4px solid #111;color:#ccc;padding:10px 18px;font-size:7px;cursor:pointer;border-radius:6px;margin-top:8px;">🏠 MENU</button>
+  <div style="font-family:'Press Start 2P',monospace,cursive;font-size:18px;color:#ff3333;margin-bottom:10px;text-shadow:0 0 20px #ff0000;">YOU DIED!</div>
+  <div id="death-msg" style="font-family:'Press Start 2P',monospace,cursive;font-size:8px;color:#ffaaaa;line-height:2.2;margin-bottom:8px;max-width:300px;"></div>
+  <div id="death-answer" style="font-family:'Press Start 2P',monospace,cursive;font-size:7px;color:#aaa;margin-bottom:24px;"></div>
+  <button onclick="location.reload()" style="font-family:'Press Start 2P',monospace,cursive;background:#7a1a1a;border:none;border-bottom:4px solid #400000;color:#fff;padding:14px 24px;font-size:9px;cursor:pointer;border-radius:6px;">⚔️ RÉESSAYER</button>
+  <button onclick="autoSave();showMenu();document.getElementById('death-screen').style.display='none';" style="font-family:'Press Start 2P',monospace,cursive;background:#444;border:none;border-bottom:4px solid #111;color:#ccc;padding:10px 18px;font-size:7px;cursor:pointer;border-radius:6px;margin-top:8px;">🏠 MENU</button>
 </div>
 
 <div id="world-transition"><div id="wt-text"></div></div>
@@ -1017,15 +1017,19 @@ function showNotif(msg,type="",ms=1800){
 function getSaves(){try{return JSON.parse(localStorage.getItem(SK))||{};}catch{return {};}}
 
 function doSave(slot){
-  const sv=getSaves();
-  sv[slot]={
-    st:{...state,currentQ:null},
-    date:new Date().toLocaleDateString("fr-FR"),
-    time:new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}),
-    tier:TIERS[state.tierIdx],
-    world:WORLDS[worldOf(state.tierIdx)].name,
-  };
-  localStorage.setItem(SK,JSON.stringify(sv));
+  try{
+    const sv=getSaves();
+    sv[slot]={
+      st:{...state,currentQ:null},
+      date:new Date().toLocaleDateString("fr-FR"),
+      time:new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"}),
+      tier:TIERS[state.tierIdx],
+      world:WORLDS[worldOf(state.tierIdx)].name,
+    };
+    localStorage.setItem(SK,JSON.stringify(sv));
+  }catch(e){
+    showNotif("❌ Sauvegarde impossible<br>(stockage plein ?)","wrong",2200);
+  }
 }
 
 function quickSave(){doSave("auto");showNotif("💾 Sauvegarde rapide OK !","correct",1300);}
@@ -1070,8 +1074,12 @@ function loadSave(slot){
 }
 
 function deleteSave(slot){
-  const s=getSaves();delete s[slot];
-  localStorage.setItem(SK,JSON.stringify(s));
+  try{
+    const s=getSaves();delete s[slot];
+    localStorage.setItem(SK,JSON.stringify(s));
+  }catch(e){
+    showNotif("❌ Erreur de suppression","wrong",1500);return;
+  }
   showSaveScreen();showNotif("🗑️ Sauvegarde supprimée.","",1200);
 }
 function manualSave(slot){doSave(slot);showNotif(`💾 Slot ${slot} sauvegardé !`,"correct",1400);showSaveScreen();}
@@ -1490,7 +1498,7 @@ const SEASONS={
   spring:{
     label:"🌸 PRINTEMPS",
     urls:[
-      "./mc_printemps.png"
+      "./mc_printemps.webp"
     ],
     overlay:"rgba(60,120,0,0.18)",
     particles:["🌸","🌿","🦋","🌷","🌱"],
@@ -1499,7 +1507,7 @@ const SEASONS={
   summer:{
     label:"☀️ ÉTÉ",
     urls:[
-      "./mc_été.png"
+      "./mc_été.webp"
     ],
     overlay:"rgba(120,100,0,0.15)",
     particles:["☀️","🌻","✨","🔆","🌾"],
@@ -1508,7 +1516,7 @@ const SEASONS={
   autumn:{
     label:"🍂 AUTOMNE",
     urls:[
-      "./mc_automne.png"
+      "./mc_automne.webp"
     ],
     overlay:"rgba(100,50,0,0.2)",
     particles:["🍂","🍁","🍃","🌰","🎃"],
@@ -1517,7 +1525,7 @@ const SEASONS={
   winter:{
     label:"❄️ HIVER",
     urls:[
-      "./mc_hiver.png"
+      "./mc_hiver.webp"
     ],
     overlay:"rgba(30,60,120,0.2)",
     particles:["❄️","🌨️","⛄","✨","💎"],
