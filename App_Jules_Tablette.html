@@ -7,8 +7,28 @@
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <script>
-if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
-// Capture l'événement d'installation PWA
+// ── Service Worker + mise à jour automatique ──────────
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js');
+
+  // Rechargement automatique quand un nouveau SW prend le contrôle
+  let _swRefreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if(_swRefreshing) return;
+    _swRefreshing = true;
+    window.location.reload();
+  });
+
+  // Message explicite du SW après activation
+  navigator.serviceWorker.addEventListener('message', e => {
+    if(e.data && e.data.type === 'SW_UPDATED' && !_swRefreshing){
+      _swRefreshing = true;
+      window.location.reload();
+    }
+  });
+}
+
+// ── Prompt d'installation PWA ─────────────────────────
 window._installPrompt = null;
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();

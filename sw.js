@@ -1,7 +1,7 @@
 // Service Worker — Jules Adventure CM1
-// Version 4 : cache-first + stratégie réseau de secours
+// Version 5 : mise à jour automatique + notification aux clients
 
-const CACHE_NAME = "jules-adventure-v4";
+const CACHE_NAME = "jules-adventure-v5";
 const ASSETS_TO_CACHE = [
     "./",
     "./App_Jules_Tablette.html",
@@ -18,39 +18,60 @@ self.addEventListener("install", event => {
     self.skipWaiting(); // Activation immédiate sans attendre
 });
 
-// Activation : nettoyage des anciens caches
+// Activation : nettoyage anciens caches + notification rechargement
 self.addEventListener("activate", event => {
     event.waitUntil(
-        caches.keys().then(keys =>
-            Promise.all(
-                keys
-                    .filter(key => key !== CACHE_NAME)
-                    .map(key => caches.delete(key))
-            )
-        )
+        caches.keys()
+            .then(keys => Promise.all(
+                keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+            ))
+            .then(() => self.clients.claim())
+            .then(() => self.clients.matchAll({ type: "window" }))
+            .then(clients => {
+                // Demande à toutes les pages ouvertes de se recharger
+                clients.forEach(client => client.postMessage({ type: "SW_UPDATED" }));
+            })
     );
-    self.clients.claim(); // Contrôle immédiat de tous les onglets
 });
 
-// Fetch : cache-first, réseau en fallback
+// Fetch : réseau d'abord pour HTML/SW/manifest, cache pour le reste
 self.addEventListener("fetch", event => {
-    // Ne traiter que les requêtes GET
     if (event.request.method !== "GET") return;
 
-    event.respondWith(
-        caches.match(event.request).then(cached => {
-            if (cached) return cached; // Servi depuis le cache (mode offline OK)
-            return fetch(event.request).then(response => {
-                // Mettre en cache les nouvelles ressources locales
-                if (response && response.status === 200 && response.type === "basic") {
-                    const toCache = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
-                }
-                return response;
-            });
-        }).catch(() => {
-            // Fallback ultime si réseau coupé et ressource non en cache
-            return caches.match("./App_Jules_Tablette.html");
-        })
-    );
+    const url = new URL(event.request.url);
+    const isCore = url.pathname === "/" ||
+                   url.pathname.endsWith(".html") ||
+                   url.pathname.endsWith("sw.js") ||
+                   url.pathname.endsWith("manifest.json");
+
+    if (isCore) {
+        // Fichiers principaux : réseau en priorité (toujours à jour)
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    if (response && response.status === 200 && response.type === "basic") {
+                        const toCache = response.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
+                    }
+                    return response;
+                })
+                .catch(() => caches.match(event.request)
+                    .then(cached => cached || caches.match("./App_Jules_Tablette.html"))
+                )
+        );
+    } else {
+        // Assets (images, fonts…) : cache en priorité
+        event.respondWith(
+            caches.match(event.request).then(cached => {
+                if (cached) return cached;
+                return fetch(event.request).then(response => {
+                    if (response && response.status === 200 && response.type === "basic") {
+                        const toCache = response.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, toCache));
+                    }
+                    return response;
+                });
+            }).catch(() => caches.match("./App_Jules_Tablette.html"))
+        );
+    }
 });
